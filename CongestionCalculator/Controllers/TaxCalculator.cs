@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TaxCalculator.Controllers
 {
     [ApiController]
-    [Route("Tax")]
+    [Route("tax")]
     public class TaxCalculator : ControllerBase
     {
         private readonly ICongestionTaxCalculator _congestionTaxCalculator;
@@ -14,7 +14,7 @@ namespace TaxCalculator.Controllers
         }
 
         [HttpPost]
-        [Route("CalculateCongestionTax")]
+        [Route("calculate-congestion")]
         public IActionResult CalculateCongestionTax(TaxInputModel taxableInformation)
         {
             if (ModelState.IsValid)

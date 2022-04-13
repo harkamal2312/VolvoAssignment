@@ -99,7 +99,13 @@ namespace Congestion.Calculator
             return true;
         }
 
-
+        /// <summary>
+        /// /This method was used earlier basis the static parameters for tax calculations
+        /// </summary>
+        /// <param name="hour"></param>
+        /// <param name="minute"></param>
+        /// <param name="tollFee"></param>
+        /// <returns></returns>
         private static bool CalculateTollFee(int hour, int minute, out int tollFee)
         {
 
