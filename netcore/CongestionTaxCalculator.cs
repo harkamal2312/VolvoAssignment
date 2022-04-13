@@ -51,13 +51,14 @@ namespace Congestion.Calculator
 
         private bool IsTollFreeVehicle(string vehicle)
         {
-            if (vehicle == null) return false;
-            return vehicle.Equals(TollFreeVehicles.Motorcycle.ToString()) ||
-                   vehicle.Equals(TollFreeVehicles.Emergency.ToString()) ||
-                   vehicle.Equals(TollFreeVehicles.Diplomat.ToString()) ||
-                   vehicle.Equals(TollFreeVehicles.Foreign.ToString()) ||
-                   vehicle.Equals(TollFreeVehicles.Busses.ToString()) ||
-                   vehicle.Equals(TollFreeVehicles.Military.ToString());
+            if (vehicle == null)
+                return false;
+            return string.Equals(vehicle, TollFreeVehicles.Motorcycle.ToString(), StringComparison.CurrentCultureIgnoreCase) ||
+                   string.Equals(vehicle, TollFreeVehicles.Emergency.ToString(), StringComparison.CurrentCultureIgnoreCase) ||
+                   string.Equals(vehicle, TollFreeVehicles.Diplomat.ToString(), StringComparison.CurrentCultureIgnoreCase) ||
+                   string.Equals(vehicle, TollFreeVehicles.Foreign.ToString(), StringComparison.CurrentCultureIgnoreCase) ||
+                   string.Equals(vehicle, TollFreeVehicles.Busses.ToString(), StringComparison.CurrentCultureIgnoreCase) ||
+                   string.Equals(vehicle, TollFreeVehicles.Military.ToString(), StringComparison.CurrentCultureIgnoreCase);
         }
 
         private int GetTollFee(DateTime date)
@@ -72,8 +73,8 @@ namespace Congestion.Calculator
 
         private static bool CalculateTollFeeFromJson(DateTime date, out int tollFee)
         {
-           
-            var vehicleTimeSpan = new TimeSpan(date.Hour,date.Minute,0);
+
+            var vehicleTimeSpan = new TimeSpan(date.Hour, date.Minute, 0);
             var calculatedFee = 0;
             foreach (var slabs in _parameters)
             {
@@ -92,7 +93,7 @@ namespace Congestion.Calculator
                         calculatedFee = slabs.Toll;
                     }
                 }
-                
+
             }
             tollFee = calculatedFee;
             return true;

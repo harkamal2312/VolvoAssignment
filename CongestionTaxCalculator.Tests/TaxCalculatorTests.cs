@@ -46,6 +46,42 @@ namespace CongestionTaxCalculator.Tests
 
             Assert.AreEqual(26, truckAmount);
         }
+
+        [Test]
+        public void CalculateCongestionTaxTestForWeekend()
+        {
+            var datesArray = new List<DateTime>
+            {
+                Convert.ToDateTime("2013-02-09 06:20:27"),
+                Convert.ToDateTime("2013-02-09 14:35:00"),
+                Convert.ToDateTime("2013-02-09 15:29:00"),
+                Convert.ToDateTime("2013-02-10 15:47:00"),
+                Convert.ToDateTime("2013-02-10 16:01:00")
+            };
+
+            var taxCalculator = new Congestion.Calculator.CongestionTaxCalculator();
+            var taxAmount = taxCalculator.GetTax("car", datesArray.ToArray());
+
+            Assert.AreEqual(0, taxAmount);
+        }
+
+        [Test]
+        public void CalculateCongestionTaxTestJuly()
+        {
+            var datesArray = new List<DateTime>
+            {
+                Convert.ToDateTime("2013-07-09 06:20:27"),
+                Convert.ToDateTime("2013-07-09 14:35:00"),
+                Convert.ToDateTime("2013-07-09 15:29:00"),
+                Convert.ToDateTime("2013-07-10 15:47:00"),
+                Convert.ToDateTime("2013-07-10 16:01:00")
+            };
+
+            var taxCalculator = new Congestion.Calculator.CongestionTaxCalculator();
+            var taxAmount = taxCalculator.GetTax("car", datesArray.ToArray());
+
+            Assert.AreEqual(0, taxAmount);
+        }
         [Test]
         public void CalculateCongestionTaxTestForAllTimeStamps()
         {
