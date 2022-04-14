@@ -169,15 +169,15 @@ namespace Congestion.Calculator
 
         private bool IsTollFreeDate(DateTime date)
         {
-            int year = date.Year;
-            int month = date.Month;
-            int day = date.Day;
+            var year = date.Year;
+            var month = date.Month;
+            var day = date.Day;
 
-            if (IsWeekend(date))
-                return true;
-            if (year != 2013)
-                return false;
+            return IsWeekend(date) || year == 2013 && IsHoliday(month, day);
+        }
 
+        private static bool IsHoliday(int month, int day)
+        {
             return month == 1 && day == 1 ||
                    month == 3 && (day == 28 || day == 29) ||
                    month == 4 && (day == 1 || day == 30) ||
