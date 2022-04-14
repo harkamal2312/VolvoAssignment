@@ -49,7 +49,7 @@ namespace Congestion.Calculator
             return totalFee;
         }
 
-        private bool IsTollFreeVehicle(string vehicle)
+        private static bool IsTollFreeVehicle(string vehicle)
         {
             if (vehicle == null)
                 return false;
@@ -173,7 +173,7 @@ namespace Congestion.Calculator
             int month = date.Month;
             int day = date.Day;
 
-            if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
+            if (IsWeekend(date))
                 return true;
             if (year != 2013)
                 return false;
@@ -186,6 +186,11 @@ namespace Congestion.Calculator
                    month == 7 ||
                    month == 11 && day == 1 ||
                    month == 12 && (day == 24 || day == 25 || day == 26 || day == 31);
+        }
+
+        private static bool IsWeekend(DateTime date)
+        {
+            return date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
         }
     }
 }
