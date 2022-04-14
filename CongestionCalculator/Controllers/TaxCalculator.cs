@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TaxCalculator.Controllers
 {
     [ApiController]
-    [Route("tax")]
+    [Route("api/tax")]
     public class TaxCalculator : ControllerBase
     {
         private readonly ICongestionTaxCalculator _congestionTaxCalculator;
